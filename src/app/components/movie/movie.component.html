@@ -1,0 +1,41 @@
+<div class="contenedor" *ngIf="movie">
+    <!-- *Boton para cerrar la ventana modal -->
+    <div class="float-end">
+      <button mat-icon-button (click)="close()">
+        <mat-icon class="fs-2 text-white">clear</mat-icon>
+      </button>
+    </div>
+  
+    <div *ngIf="movie.background" class="bg-image" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + movie.background +')'}"></div>
+    <div *ngIf="!movie.background" class="imagen-fondo" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + movie.poster +')'}"></div>
+  
+    <div class="mt-4 ps-5 text-white w-100">
+      <p class="fs-2 py-2">{{movie.title}}</p>
+      <p class="fs-4 py-2">Estreno: {{movie.date | date: 'dd/MMMM/yyyy'}}</p>
+      <ng-container *ngFor="let gen of movie.genres, let isLast=last">
+        <span class="fs-4 py-2">{{gen.name}}{{isLast ? '' : ', '}}</span>
+      </ng-container>
+  
+      <ng-container *ngIf="movie.overview; else default">
+        <p class="fs-4 py-2 pe-4">{{movie.overview}}</p>
+      </ng-container>
+  
+      <ng-template #default>
+        <p>Nada</p>
+      </ng-template>
+  
+      <div class="d-block">
+        <button mat-icon-button #add class="me-5">
+          <mat-icon>add</mat-icon>
+          <p class="fs-6">Mi lista</p>
+        </button>
+        
+        <button mat-icon-button #like class="ms-5" (click)="likeMovie(data)" [ngStyle]="{'color': liked ? 'red' : 'white'}">
+          <mat-icon>favorite</mat-icon>
+          <p class="fs-6">Me gusta</p>
+        </button>
+      </div>
+  
+    </div>
+  
+  </div>
