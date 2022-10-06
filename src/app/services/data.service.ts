@@ -9,16 +9,16 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
 
-  private actionMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=28'
-  private comedyMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=35'
-  private dramaMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=18'
+  private horrorMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=27'
+  private animationMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=16'
+  private mysteryMovies: string = 'https://api.themoviedb.org/3/discover/movie?api_key='+environment.api_key+'&language=es-MX&region=MX&sort_by=primary_release_date.desc&page=1&with_genres=9648'
 
   private movieInfo: string = 'https://api.themoviedb.org/3/movie/{{id}}?api_key='+environment.api_key+'&language=es-MX'
 
   constructor(public http: HttpClient) { }
 
-  getActionMovies(): Observable<any>{
-    return this.http.get(this.actionMovies).pipe(
+  getHorrorMovies(): Observable<any>{
+    return this.http.get(this.horrorMovies).pipe(
       map((res: any) => {
         let response: any[] = []
         res.results.forEach((el: any) => {
@@ -34,8 +34,8 @@ export class DataService {
     )
   }
 
-  getComedyMovies(): Observable<any>{
-    return this.http.get(this.comedyMovies).pipe(
+  getAnimatedMovies(): Observable<any>{
+    return this.http.get(this.animationMovies).pipe(
       map((res: any) => {
         let response: any[] = []
         res.results.forEach((el: any) => {
@@ -51,8 +51,8 @@ export class DataService {
     )
   }
 
-  getDramaMovies(): Observable<any>{
-    return this.http.get(this.dramaMovies).pipe(
+  getMysteryMovies(): Observable<any>{
+    return this.http.get(this.mysteryMovies).pipe(
       map((res: any) => {
         let response: any[] = []
         res.results.forEach((el: any) => {

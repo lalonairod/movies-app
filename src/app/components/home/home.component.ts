@@ -17,20 +17,20 @@ export class HomeComponent implements OnInit {
   constructor(public dataService: DataService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dataService.getActionMovies().subscribe({
+    this.dataService.getHorrorMovies().subscribe({
       next: (res => {
         this.actionMovies = res
       })
     })
     
-    this.dataService.getComedyMovies().subscribe({
+    this.dataService.getAnimatedMovies().subscribe({
       next: (res => {
         // console.log(res);
         this.comedyMovies = res
       })
     })
     
-    this.dataService.getDramaMovies().subscribe({
+    this.dataService.getMysteryMovies().subscribe({
       next: (res => {
         // console.log(res);
         this.dramaMovies = res

@@ -32,12 +32,9 @@ export class MovieComponent implements OnInit {
         console.error(err);
       }),
       complete: () => {
-        // console.info('Peticion completa')
-
         if(this.dataService.getLikedMovies().indexOf(this.data) >= 0){
           this.liked = true
         }
-
       }
     })
     
@@ -47,7 +44,6 @@ export class MovieComponent implements OnInit {
     if(this.dataService.addLikedMovies(id)){
       this.liked = true
       return true
-
     }else {
       this.liked = false
       return false
